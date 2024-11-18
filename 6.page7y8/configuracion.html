@@ -1,0 +1,499 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UNAB FreeTime - Privacidad y Seguridad</title>
+    <style>
+        :root {
+            --primary-color: #009CDE;
+            --secondary-color: #87CEEB;
+            --background-gray: #E6E6E6;
+            --hover-gray: #D3D3D3;
+            --text-dark: #555;
+            --white: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-grow: 1;
+        }
+
+        .menu-button {
+            width: 2rem;
+            height: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--white);
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .logo {
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 100%;
+            margin-right: 0.625rem;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-right img {
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+        }
+
+        .app-title-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-title {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--background-gray);
+            flex-shrink: 0;
+        }
+
+        .menu-section:not(:last-child) {
+            margin-bottom: 0.3125rem;
+        }
+
+        .menu-header {
+            background-color: var(--secondary-color);
+            padding: 0.625rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .menu-items {
+            background-color: var(--background-gray);
+            display: none;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .menu-section.active .menu-items {
+            display: block;
+        }
+
+        .menu-section.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item {
+            padding: 0.625rem 1.25rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background-color: var(--hover-gray);
+        }
+
+        .content-area {
+            flex-grow: 1;
+            padding: 1.25rem;
+            background-color: #F5F5F5;
+        }
+
+        .page-title {
+            background-color: var(--secondary-color);
+            padding: 0.625rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.25rem;
+            text-align: center;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 2.5rem;
+            padding: 1.25rem;
+            background-color: var(--white);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            background-color: var(--background-gray);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.625rem;
+            align-items: center;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .email-link {
+            color: var(--primary-color);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            padding: 0.625rem 1.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            gap: 1.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 1.875rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3125rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-links img {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .phone-number {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-right: 0.625rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .phone-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.25rem;
+            }
+
+            .footer {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .phone-number {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                padding-bottom: 0.625rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-button" aria-label="Menu">☰</button>
+            <div class="logo">
+                <img src="Images/LogoUnab.png" alt="Logo UNAB">
+            </div>
+            <div class="app-title-container">
+                <div class="app-title">
+                    <div>UNAB FreeTime</div>
+                    <div>Configuraciones</div>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <img src="Images/Configuracion.png" alt="Configuración">
+            <img src="Images/Usuario.png" alt="Usuario">
+        </div>
+    </header>
+
+    <div class="main-content">
+        <nav class="sidebar">
+            <div class="menu-section">
+                <div class="menu-header" role="button" aria-expanded="false">
+                    Perfil de Usuario
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item" role="button" tabindex="0">Privacidad y Seguridad</div>
+                    <div class="menu-item" role="button" tabindex="0">Cambio de Contraseña</div>
+                    <div class="menu-item" role="button" tabindex="0">Cerrar Sesión</div>
+                    <div class="menu-item" role="button" tabindex="0">Notificaciones</div>
+                    <div class="menu-item" role="button" tabindex="0">Eliminar Cuenta</div>
+                </div>
+            </div>
+            <div class="menu-section">
+                <div class="menu-header" role="button" aria-expanded="false">
+                    Configuración del sistema
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item" role="button" tabindex="0">Idioma de la Página</div>
+                    <div class="menu-item" role="button" tabindex="0">Eliminar Cuenta</div>
+                    <div class="menu-item" role="button" tabindex="0">Configuración de Calendario</div>
+                    <div class="menu-item" role="button" tabindex="0">Personalización de Tema</div>
+                    <div class="menu-item" role="button" tabindex="0">Accesibilidad</div>
+                </div>
+            </div>
+            <div class="menu-section">
+                <div class="menu-header" role="button" aria-expanded="false">
+                    Ayuda y Soporte
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item" role="button" tabindex="0">Centro de Ayuda</div>
+                    <div class="menu-item" role="button" tabindex="0">Contactar Soporte</div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <h1 class="page-title">Privacidad y Seguridad</h1>
+            <section class="profile-section">
+                <div class="profile-container">
+                    <div class="profile-image">
+                        <img src="Images/Usuariogrande.png" alt="Foto de perfil del usuario">
+                    </div>
+                    <div class="profile-name">Juan Carlos Torres González</div>
+                </div>
+                <div class="profile-info">
+                    <h2 class="info-title">Información general</h2>
+                    <div class="info-grid">
+                        <div class="info-label">Correo electrónico:</div>
+                        <div><a href="mailto:jtorres@unab.edu.co" class="email-link">jtorres@unab.edu.co</a></div>
+                        <div class="info-label">Teléfono:</div>
+                        <div>315 6485749</div>
+                        <div class="info-label">Fecha de nacimiento:</div>
+                        <div>15/03/2002</div>
+                        <div class="info-label">Nivel:</div>
+                        <div>Pregrado profesional</div>
+                        <div class="info-label">Clase:</div>
+                        <div>Segundo semestre</div>
+                        <div class="info-label">Programa:</div>
+                        <div>Ing. biomédica</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="phone-number">
+            <svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            643 6111
+        </div>
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@unabeduco" target="_blank" rel="noopener noreferrer">
+                <img src="Images/Youtube.png" alt="YouTube">Universidad UNAB
+            </a>
+            <a href="https://www.instagram.com/unab_online/" target="_blank" rel="noopener noreferrer">
+                <img src="Images/Instagram.png" alt="Instagram">unab_online
+            </a>
+            <a href="https://www.facebook.com/unab.online/" target="_blank" rel="noopener noreferrer">
+                <img src="Images/Facebook.png" alt="Facebook">unab.online
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener todas las secciones del menú
+            const menuSections = document.querySelectorAll('.menu-section');
+
+            // Agregar evento click a cada encabezado del menú
+            menuSections.forEach(section => {
+                const header = section.querySelector('.menu-header');
+                const items = section.querySelector('.menu-items');
+
+                header.addEventListener('click', () => {
+                    // Toggle la clase active en la sección actual
+                    section.classList.toggle('active');
+                    
+                    // Actualizar el atributo aria-expanded
+                    const isExpanded = section.classList.contains('active');
+                    header.setAttribute('aria-expanded', isExpanded);
+
+                    // Cerrar otras secciones
+                    menuSections.forEach(otherSection => {
+                        if (otherSection !== section) {
+                            otherSection.classList.remove('active');
+                            otherSection.querySelector('.menu-header').setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            });
+
+            // Hacer que la primera sección esté abierta por defecto
+            menuSections[0].classList.add('active');
+            menuSections[0].querySelector('.menu-header').setAttribute('aria-expanded', 'true');
+        });
+
+        // Funcionalidad para el botón de menú hamburguesa
+        document.querySelector('.menu-button').addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Manejar la navegación con teclado para accesibilidad
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    item.click();
+                }
+            });
+        });
+
+        // Manejar clics en los elementos del menú
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remover la clase active de todos los elementos del menú
+                document.querySelectorAll('.menu-item').forEach(menuItem => {
+                    menuItem.classList.remove('active');
+                });
+                
+                // Agregar la clase active al elemento clickeado
+                this.classList.add('active');
+                
+                // Aquí puedes agregar la lógica de navegación si es necesario
+                // Por ejemplo, cambiar el contenido de la página según el elemento seleccionado
+            });
+        });
+
+        // Función para manejar el responsive en dispositivos móviles
+        function handleMobileView() {
+            const sidebar = document.querySelector('.sidebar');
+            if (window.innerWidth <= 768) {
+                sidebar.style.display = 'none';
+            } else {
+                sidebar.style.display = 'block';
+            }
+        }
+
+        // Escuchar cambios en el tamaño de la ventana
+        window.addEventListener('resize', handleMobileView);
+
+        // Ejecutar la función al cargar la página
+        handleMobileView();
+    </script>
+</body>
+</html>

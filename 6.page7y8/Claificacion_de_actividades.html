@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UNAB Eventos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .header {
+            background-color: #009CDE;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-button {
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        .header-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.2s;
+        }
+
+        .header-button:hover {
+            transform: scale(1.1);
+        }
+
+        .header-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .logo img {
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-content {
+            background-color: #87CEEB;
+            min-height: calc(100vh - 120px);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .events-section {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        .events-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .events-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .arrow {
+            color: #009CDE;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        .arrow:hover {
+            color: #0056b3;
+        }
+
+        .month-label {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .event-item {
+            background-color: #B3E0FF;
+            padding: 12px;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .event-text {
+            margin-right: 25px;
+        }
+
+        .event-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-top: 10px;
+        }
+
+        .event-content.active {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .sub-event-item {
+            background-color: #ffffff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .sub-event-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .expand-button {
+            background: none;
+            border: none;
+            color: #009CDE;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .arrow-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-button.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        .rating-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            flex-grow: 1;
+        }
+
+        .rating-title {
+            background-color: #B3E0FF;
+            padding: 10px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            color: #FFD700;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .star:hover {
+            transform: scale(1.1);
+        }
+
+        .star.empty {
+            color: #D3D3D3;
+        }
+
+        .comments-title {
+            background-color: #B3E0FF;
+            padding: 10px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .comment-box {
+            background-color: #E6E6E6;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .footer {
+            background-color: #009CDE;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            height: 40px;
+            gap: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .phone-number {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-right: 10px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .phone-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .events-section {
+                width: 100%;
+            }
+
+            .footer {
+                flex-wrap: wrap;
+                height: auto;
+                justify-content: center;
+                padding: 15px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .phone-number {
+                border-right: none;
+                padding-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-button">☰</button>
+            <div class="logo">
+                <img src="Images/LogoUnab.png" alt="Logo UNAB">
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="header-button">
+                <img src="Images/Configuracion.png" alt="Configuración">
+            </button>
+            <button class="header-button">
+                <img src="Images/Usuario.png" alt="Usuario">
+            </button>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="events-section">
+            <div class="events-nav">
+                <span class="arrow">◄</span>
+                EVENTOS ASISTIDOS
+                <span class="arrow">►</span>
+            </div>
+            <div class="month-label">septiembre</div>
+
+            <div class="event-list">
+                <div class="event-item">
+                    <div class="event-header" onclick="toggleEvent(this)">
+                        <div class="event-text">
+                            Triciclo: Celebración 30 años del programa de Psicología
+                        </div>
+                        <button class="expand-button">
+                            <span class="arrow-icon">▼</span>
+                        </button>
+                    </div>
+                    <div class="event-content">
+                        <div class="sub-event-item" onclick="handleSubEvent('rating')">Tu calificación</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('comments')">Comentarios y calificaciones</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('suggestions')">Sugerencias</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-header" onclick="toggleEvent(this)">
+                        <div class="event-text">
+                            Degustación cultura con estudiantes de gastronomía
+                        </div>
+                        <button class="expand-button">
+                            <span class="arrow-icon">▼</span>
+                        </button>
+                    </div>
+                    <div class="event-content">
+                        <div class="sub-event-item" onclick="handleSubEvent('rating')">Tu calificación</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('comments')">Comentarios y calificaciones</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('suggestions')">Sugerencias</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-header" onclick="toggleEvent(this)">
+                        <div class="event-text">
+                            Apoyo en proceso de creación de tesis estudiantil
+                        </div>
+                        <button class="expand-button">
+                            <span class="arrow-icon">▼</span>
+                        </button>
+                    </div>
+                    <div class="event-content">
+                        <div class="sub-event-item" onclick="handleSubEvent('rating')">Tu calificación</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('comments')">Comentarios y calificaciones</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('suggestions')">Sugerencias</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-header" onclick="toggleEvent(this)">
+                        <div class="event-text">
+                            Inauguración nueva sede para estudiantes de negocios
+                        </div>
+                        <button class="expand-button">
+                            <span class="arrow-icon">▼</span>
+                        </button>
+                    </div>
+                    <div class="event-content">
+                        <div class="sub-event-item" onclick="handleSubEvent('rating')">Tu calificación</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('comments')">Comentarios y calificaciones</div>
+                        <div class="sub-event-item" onclick="handleSubEvent('suggestions')">Sugerencias</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rating-section">
+            <div class="rating-title">Califícanos</div>
+            <div class="stars">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star empty">★</span>
+            </div>
+            <div class="comments-title">Comentanos</div>
+            <div class="comment-box">
+                Fue un evento muy bonito, pues apartir de actividades interactivas pude aprender nuevas cosas y me llevo un lindo recuerdo
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="phone-number">
+            <svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            643 6111
+        </div>
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@unabeduco"><img src="Images/Youtube.png" alt="YouTube" style="width: 20px;">Universidad UNAB</a>
+            <a href="https://www.instagram.com/unab_online/"><img src="Images/Instagram.png" alt="Instagram" style="width: 20px;">unab_online</a>
+            <a href="https://www.facebook.com/unab.online/"><img src="Images/Facebook.png" alt="Facebook" style="width: 20px;">unab.online</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleEvent(header) {
+            const eventItem = header.closest('.event-item');
+            const content = eventItem.querySelector('.event-content');
+            const button = eventItem.querySelector('.expand-button');
+            
+            if (content && button) {
+                content.classList.toggle('active');
+                button.classList.toggle('active');
+            }
+        }
+
+        function handleSubEvent(action) {
+            // Prevent event from bubbling up to parent
+            event.stopPropagation();
+            
+            // Handle different actions
+            switch(action) {
+                case 'rating':
+                    console.log('Opening rating section');
+                    // Add your rating handling logic here
+                    break;
+                case 'comments':
+                    console.log('Opening comments section');
+                    // Add your comments handling logic here
+                    break;
+                case 'suggestions':
+                    console.log('Opening suggestions section');
+                    // Add your suggestions handling logic here
+                    break;
+            }
+        }
+
+        document.querySelectorAll('.expand-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const header = button.closest('.event-header');
+                if (header) {
+                    toggleEvent(header);
+                }
+            });
+        });
+
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        let currentRating = 4; // Since 4 stars are filled by default
+
+        function updateStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('empty');
+                    star.style.color = '#FFD700'; // Gold color
+                } else {
+                    star.classList.add('empty');
+                    star.style.color = '#D3D3D3'; // Light gray
+                }
+            });
+        }
+
+        stars.forEach((star, index) => {
+            // Hover effects
+            star.addEventListener('mouseover', () => {
+                updateStars(index + 1);
+            });
+
+            star.addEventListener('mouseout', () => {
+                updateStars(currentRating);
+            });
+
+            // Click event
+            star.addEventListener('click', () => {
+                currentRating = index + 1;
+                updateStars(currentRating);
+                
+                // Animation effect
+                star.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    star.style.transform = 'scale(1)';
+                }, 200);
+
+                console.log(`Rating set to: ${currentRating}`);
+            });
+        });
+
+        // Initialize stars display
+        updateStars(currentRating);
+
+        // Arrow navigation functionality for months
+        const prevArrow = document.querySelector('.events-nav .arrow:first-child');
+        const nextArrow = document.querySelector('.events-nav .arrow:last-child');
+        const monthLabel = document.querySelector('.month-label');
+
+        const months = [
+            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+        ];
+
+        let currentMonthIndex = months.indexOf('septiembre');
+
+        prevArrow.addEventListener('click', () => {
+            currentMonthIndex = (currentMonthIndex - 1 + 12) % 12;
+            monthLabel.textContent = months[currentMonthIndex];
+        });
+
+        nextArrow.addEventListener('click', () => {
+            currentMonthIndex = (currentMonthIndex + 1) % 12;
+            monthLabel.textContent = months[currentMonthIndex];
+        });
+
+        // Menu button functionality
+        const menuButton = document.querySelector('.menu-button');
+        menuButton.addEventListener('click', () => {
+            // Add your menu toggle logic here
+            console.log('Menu button clicked');
+        });
+
+        // Header button functionality
+        const configButton = document.querySelector('.header-button:first-child');
+        const userButton = document.querySelector('.header-button:last-child');
+
+        configButton.addEventListener('click', () => {
+            // Add your configuration panel logic here
+            console.log('Configuration button clicked');
+        });
+
+        userButton.addEventListener('click', () => {
+            // Add your user profile logic here
+            console.log('User profile button clicked');
+        });
+
+        // Optional: Add smooth scrolling for mobile
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>

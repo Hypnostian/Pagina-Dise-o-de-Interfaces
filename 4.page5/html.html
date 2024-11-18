@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNAB FreeTime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-menu">
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <div class="logo">
+                    <img src="images/LogoUNAB.png" alt="UNAB Logo">
+                </div>
+            </div>
+            <h1>UNAB FreeTime</h1>
+            <div class="icons">
+                <button class="icon-button" onclick="navigate('settings')">
+                    <img src="images/rueda.png" alt="Settings Icon" class="icon">
+                </button>
+                <button class="icon-button" onclick="navigate('profile')">
+                    <img src="../images/Usuario.png" alt="User Icon" class="icon">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="menu" id="menu">
+            <ul>
+                <li><a href="#" onclick="navigate('upcoming-events')">Eventos próximos</a></li>
+                <li><a href="#" onclick="navigate('past-events')">Eventos realizados</a></li>
+                <li><a href="#" onclick="navigate('top-events')">Top Eventos del Mes</a></li>
+                <li><a href="#" onclick="navigate('search-events')">Buscar Eventos</a></li>
+                <li><a href="#" onclick="navigate('surveys')">Encuestas de Valoración</a></li>
+                <li><a href="#" onclick="navigate('agenda')">Agenda de Eventos</a></li>
+                <li><a href="#" onclick="navigate('reports')">Generación de Informes</a></li>
+                <li><a href="#" onclick="navigate('stories')">Historias Participación</a></li>
+            </ul>
+            <button class="notifications-button">Notificaciones</button>
+        </aside>
+
+        <section class="content" id="content">
+            <div class="events">
+                <div class="event-card">
+                    <img src="images/event1.jpg" alt="Evento 1">
+                    <div class="event-info">
+                        <h3>Apoyo en creación de tesis estudiantil</h3>
+                        <p>Fecha creación: 16/10/24</p>
+                        <p>Fecha evento: 29/10/24</p>
+                        <p>Horas libres: 2 horas</p>
+                        <a href="#" class="more-info">Más Información</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="images/event2.png" alt="Evento 2">
+                    <div class="event-info">
+                        <h3>Degustación cultura con estudiantes de gastronomía</h3>
+                        <p>Fecha creación: 08/10/24</p>
+                        <p>Fecha evento: 05/11/24</p>
+                        <p>Horas libres: 2 horas</p>
+                        <a href="#" class="more-info">Más Información</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="images/event3.png" alt="Evento 3">
+                    <div class="event-info">
+                        <h3>Inauguración nueva sede para estudiantes de negocios</h3>
+                        <p>Fecha creación: 20/10/24</p>
+                        <p>Fecha evento: 15/11/24</p>
+                        <p>Horas libres: 2 horas</p>
+                        <a href="#" class="more-info">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <button onclick="scrollToTop()" class="back-to-top">Volver al inicio</button>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="social-media">
+            <a class="estilo-footer" href="#"><img src="images/telefono.png" alt="Teléfono"> 643 6111</a>
+            <a class="estilo-footer" href="https://www.youtube.com/@unabeduco" target="_blank">
+                <img src="images/YT.png" alt="YouTube"> Universidad UNAB
+            </a>
+            <a class="estilo-footer" href="https://www.instagram.com/unab_online/" target="_blank">
+                <img src="images/IG.png" alt="Instagram"> unab_online
+            </a>
+            <a class="estilo-footer" href="https://www.facebook.com/unab.online/" target="_blank">
+                <img src="images/FB.png" alt="Facebook"> unab.online
+            </a>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

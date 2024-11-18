@@ -1,0 +1,184 @@
+/* Estilo general del cuerpo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #009CDE; /* Azul claro del logo */
+    color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo img {
+    height: 60px; /* Tamaño ajustado para el logo */
+}
+
+.header-title {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+}
+
+.header-subtitle {
+    font-size: 16px;
+    font-style: italic;
+    color: #d1ecf1; /* Azul más claro */
+}
+
+.btn {
+    background-color: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #003f8a;
+    transform: scale(1.05);
+}
+
+/* Contenedor del registro */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    background-color: #7FD0F2; /* Azul celeste */
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border: 2px solid #005bb5; /* Borde para destacar el contenedor */
+}
+
+/* Título del formulario */
+.form-title {
+    font-size: 32px; /* Aumenta el tamaño del título */
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+    color: #003366; /* Cambia a un azul más oscuro */
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Formulario */
+.register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #005bb5;
+}
+
+.register-form input,
+.register-form select {
+    margin-top: 5px;
+    padding: 10px; /* Reduce ligeramente el padding */
+    font-size: 14px; /* Reduce el tamaño de la fuente */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Bordes más redondeados */
+    width: 100%;
+    transition: box-shadow 0.3s ease;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+    box-shadow: 0px 0px 8px #0078d7;
+    outline: none;
+}
+
+.register-form select {
+    background-color: #f9f9f9;
+}
+
+/* Captcha */
+.captcha {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el checkbox con el texto */
+    justify-content: flex-start; /* Alinea horizontalmente los elementos hacia la izquierda */
+    gap: 10px; /* Espacio entre el checkbox y el texto */
+    margin-top: 10px; /* Ajusta el espacio superior del captcha */
+}
+
+.captcha input[type="checkbox"] {
+    width: 20px;
+    height: 20px; /* Tamaño del checkbox */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el checkbox */
+}
+
+.captcha label {
+    font-size: 16px; /* Tamaño de fuente del texto */
+    color: #005bb5; /* Color del texto */
+}
+
+/* Enlace para redirección */
+.redirect-login {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.redirect-login .highlight-link {
+    color: #005bb5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.redirect-login .highlight-link:hover {
+    text-decoration: underline;
+}
+
+/* Botón de envío */
+.btn-submit {
+    margin-top: 20px;
+    background-color: #005bb5;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #003f8a;
+    transform: scale(1.05);
+}
+
+/* Animación para programas */
+#programa-container {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    

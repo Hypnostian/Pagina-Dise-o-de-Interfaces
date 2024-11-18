@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="images/shorticon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo">
+            <img src="images/LogoUNAB.png" alt="Logo UNAB"> <!-- Imagen del logo UNAB -->
+        </div>
+        <div class="tituloEncabezado">
+            <h1>UNAB FreeTime</h1>
+            <h2>Estudiantes</h2>
+        </div>
+        <div class="header-buttons">
+            <button class="btn"> Accesibilidad </button>
+        </div>
+    </header>
+
+    <!-- Inicio Sesión -->
+    <section class="login-container">
+        <div class = "login-rectangle">
+        <h2 class = "login-h2">Inicio de Sesión</h2>
+        <form class = "form-recuadro"id="loginForm">
+            <label class = "login-text" for="email">Dirección de email:</label>
+            <input type="email" id="email" required>
+            <label class = "login-text" for="password">Contraseña:</label>
+            <input type="password" id="password" required>
+            <div class="button-container">
+                <button class="btn" type="submit">Registrarme</button>
+                <button class="btn" type="submit">Iniciar sesión</button>
+            </div>
+        </form>
+    
+        <script>
+            function login(event) {
+                event.preventDefault(); 
+
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+    
+                const usuarios = [
+                    { email: "jtorres@unab.edu.co", password: "123", redireccion: "wireframe4.html" },
+                ];
+    
+                const usuarioValido = usuarios.find(user => user.email === email && user.password === password);
+    
+                if (usuarioValido) {
+                    window.location.href = usuarioValido.redireccion;
+                } else {
+                    alert("Correo o contraseña incorrectos.");
+                }
+            }
+    
+            document.getElementById('loginForm').addEventListener('submit', login);
+        </script>
+        </div>
+      </section>

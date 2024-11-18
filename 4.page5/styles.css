@@ -1,0 +1,226 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #009CDE;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-container h1 {
+    font-size: 18px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.header-container .logo-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-toggle {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.header-container .icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+/* Menu */
+.menu {
+    width: 20%;
+    background-color: #005bb5; /* Azul según la imagen */
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu.visible {
+    transform: translateX(0);
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #0078d4; /* Azul más claro para destacar */
+    color: #ffffff;
+}
+
+.notifications-button {
+    margin-top: 20px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.notifications-button:hover {
+    background-color: #004a99; /* Azul oscuro para destacar */
+}
+
+
+/* Content */
+.content {
+    margin-left: 25%;
+    margin-top: 80px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.content.centered {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+.events {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.event-card {
+    display: flex;
+    gap: 20px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.event-card:hover {
+    transform: scale(1.02);
+    background-color: #f0f8ff;
+}
+
+.event-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.event-info {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.event-info h3 {
+    margin: 0 0 10px;
+}
+
+.more-info {
+    color: #0078d4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Button: Volver al inicio */
+.back-to-top {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para el Pie de Página */
+/* Pie de Página */
+.footer {
+    background-color: #009CDE; /* Azul para el pie */
+    padding: 5px 20px; /* Espaciado reducido */
+    display: flex;
+    justify-content: flex-start; /* Elementos alineados a la izquierda */
+    align-items: center;
+    position: relative; /* Permite ajustarlo al final sin fijarlo */
+    width: 100%;
+    height: 50px; /* Altura pequeña */
+}
+
+.social-media {
+    display: flex; /* Elementos en línea horizontal */
+    gap: 15px; /* Espaciado entre íconos y texto */
+    align-items: center; /* Centrado vertical */
+}
+
+.estilo-footer {
+    color: #FFF; /* Texto blanco */
+    font-size: 14px; /* Tamaño de texto pequeño */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    display: flex; /* Ícono y texto alineados horizontalmente */
+    align-items: center;
+    gap: 5px; /* Espaciado entre ícono y texto */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.estilo-footer img {
+    width: 20px; /* Tamaño reducido para los íconos */
+    height: auto;
+}
+
+.estilo-footer:hover {
+    color: #FFAE00; /* Cambia el color al pasar el mouse */
+    transform: scale(1.1); /* Pequeña ampliación en hover */
+}

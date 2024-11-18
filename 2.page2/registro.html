@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="../images/shorticon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Estudiantil | UNAB FreeTime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo">
+            <img src="../images/LogoUNAB.png" alt="Logo UNAB"> <!-- Imagen del logo UNAB -->
+        </div>
+        <h1 class="header-title">UNAB FreeTime <br><span class="header-subtitle">Estudiantes</span></h1>
+        <button class="btn">Accesibilidad</button>
+    </header>
+
+    <!-- Formulario de Registro -->
+    <main class="register-container">
+        <h2 class="form-title">Registro Estudiantil</h2>
+        <form class="register-form" id="student-register-form">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" placeholder="Ingrese sus nombres" required>
+
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Ingrese sus apellidos" required>
+
+            <label for="correo">Correo Institucional:</label>
+            <input type="email" id="correo" name="correo" placeholder="Ingrese su correo institucional" required>
+
+            <label for="facultad">Facultad a la que pertenece:</label>
+            <select id="facultad" name="facultad" required>
+                <option value="" disabled selected>Seleccione una opción</option>
+                <!-- Facultades se llenarán dinámicamente con JS -->
+            </select>
+
+            <div id="programa-container" style="display: none; animation: fadeIn 0.5s ease;">
+                <label for="programa">Programa al que pertenece:</label>
+                <select id="programa" name="programa">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <!-- Programas se llenarán dinámicamente con JS -->
+                </select>
+            </div>
+
+            <label for="semestre">Semestre Actual:</label>
+            <select id="semestre" name="semestre" required>
+                <option value="" disabled selected>Seleccione una opción</option>
+                <!-- Opciones de semestre -->
+                <script>
+                    for (let i = 1; i <= 12; i++) {
+                        document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+            </select>
+
+            <div class="captcha">
+                <input type="checkbox" id="captcha-check" name="captcha" required>
+                <label for="captcha-check">No soy un robot</label>
+            </div>            
+
+            <p class="redirect-login">
+                ¿Ya tienes <a href="../login.html" class="highlight-link">Cuenta?</a>
+            </p>
+
+            <button type="submit" class="btn-submit">Regístrame</button>
+        </form>
+    </main>
+
+    <!-- Importar Scripts -->
+    <script src="scripts.js"></script>
+</body>
+</html>

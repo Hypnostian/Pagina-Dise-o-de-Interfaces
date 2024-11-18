@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="images/shorticon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNAB FreeTime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo">
+            <img src="images/LogoUNAB.png" alt="Logo UNAB"> <!-- Imagen del logo UNAB -->
+        </div>
+        <div class="header-buttons">
+            <button class="btn" id="login-btn" onclick="redirectToLogin()">Iniciar sesión</button>
+            <button class="btn" id="accessibility-btn">Accesibilidad</button>
+            <div class="language-selector">
+                <div class="language-option" id="language-es" onclick="changeLanguage('es')">
+                    <img src="images/COL.png" alt="Español - Colombia" class="flag-icon">
+                    <span>Español (Colombia)</span>
+                </div>
+                <div class="language-option" id="language-en" onclick="changeLanguage('en')">
+                    <img src="images/US.png" alt="English - United States" class="flag-icon">
+                    <span>English (United States)</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Introductorio -->
+    <section class="intro-banner">
+        <div class="banner-content">
+            <h1 id="main-title">¡Optimiza tu tiempo libre con UNAB FreeTime!</h1>
+            <p id="main-subtitle">Gestiona tus horas libres, participa en actividades y cumple con tus requisitos de graduación fácilmente</p>
+            <div class="intro-content">
+                <div class="intro-image">
+                    <img src="images/evento1.png" alt="Imagen de actividades estudiantiles"> <!-- Imagen de actividades -->
+                </div>
+                <div class="intro-description">
+                    <p id="main-description">UNAB FreeTime es tu herramienta para planificar y aprovechar tus horas libres. Accede a eventos, registra tus horas, y asegura tu progreso hacia la graduación.</p>
+                </div>
+            </div>
+            <!-- Botones de Funcionalidades -->
+            <div class="action-buttons">
+                <button class="action-btn" id="activities-btn" onclick="redirectTo('activities.html')">
+                    <img src="images/iconcal.png" alt="Ícono de calendario"> <!-- Ícono de Ver Actividades -->
+                    <span id="activities-text">Ver Actividades</span>
+                </button>
+                <button class="action-btn" id="events-btn" onclick="redirectTo('events.html')">
+                    <img src="images/iconstar.png" alt="Ícono de estrella"> <!-- Ícono de Valora Eventos -->
+                    <span id="events-text">Valora Eventos</span>
+                </button>
+                <button class="action-btn" id="report-btn" onclick="redirectTo('report.html')">
+                    <img src="images/iconwrite.png" alt="Ícono de reporte"> <!-- Ícono de Generar Reporte -->
+                    <span id="report-text">Generar Reporte</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="social-media">
+            <a class="estilo-footer" href="#"><img src="images/telefono.png" alt="Teléfono"> 643 6111</a>
+            <a class="estilo-footer" href="https://www.youtube.com/@unabeduco" target="_blank">
+                <img src="images/YT.png" alt="YouTube"> Universidad UNAB
+            </a>
+            <a class="estilo-footer" href="https://www.instagram.com/unab_online/" target="_blank">
+                <img src="images/IG.png" alt="Instagram"> unab_online
+            </a>
+            <a class="estilo-footer" href="https://www.facebook.com/unab.online/" target="_blank">
+                <img src="images/FB.png" alt="Facebook"> unab.online
+            </a>
+        </div>
+    </footer>
+    
+    <!-- Script para funcionalidades -->
+    <script src="scripts.js"></script>
+</body>
+</html>
