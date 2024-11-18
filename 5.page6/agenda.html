@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNAB FreeTime - Agenda</title>
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/main.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="agenda1.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-menu">
+                <button class="menu-toggle">☰</button>
+                <div class="logo">
+                    <img src="images/LogoUNAB.png" alt="UNAB Logo">
+                </div>
+            </div>
+            <h1>UNAB FreeTime - Agenda de eventos</h1>
+            <div class="icons">
+                <button class="icon-button">
+                    <img src="images/rueda.png" alt="Settings Icon" class="icon">
+                </button>
+                <button class="icon-button">
+                    <img src="images/Usuario.png" alt="User Icon" class="icon">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="agenda-container">
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <h2 class="section-title">Agéndate</h2>
+                <div class="calendar-controls">
+                    <label for="month">Fecha:</label>
+                    <select id="month">
+                        <option value="9">Octubre</option>
+                        <option value="10">Noviembre</option>
+                        <option value="11">Diciembre</option>
+                    </select>
+                    <select id="year">
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+                <div id="calendar"></div>
+            </div>
+
+            <!-- Event Details Section -->
+            <div class="event-details">
+                <h3>Eventos para <span id="selected-date">--</span></h3>
+                <div id="event-list">
+                    <p>Seleccione un día para ver las actividades.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="social-media">
+            <a class="estilo-footer" href="#"><img src="images/telefono.png" alt="Teléfono"> 643 6111</a>
+            <a class="estilo-footer" href="https://www.youtube.com/@unabeduco" target="_blank">
+                <img src="images/YT.png" alt="YouTube"> Universidad UNAB
+            </a>
+            <a class="estilo-footer" href="https://www.instagram.com/unab_online/" target="_blank">
+                <img src="images/IG.png" alt="Instagram"> unab_online
+            </a>
+            <a class="estilo-footer" href="https://www.facebook.com/unab.online/" target="_blank">
+                <img src="images/FB.png" alt="Facebook"> unab.online
+            </a>
+        </div>
+    </footer>
+    
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/main.min.js"></script>
+    <!-- Custom JS -->
+    <script src="agenda2.js"></script>
+</body>
+</html>
